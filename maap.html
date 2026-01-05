@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Surprise</title>
+    
+    <style>
+        /* CSS DISINI */
+        body {
+            background-color: #fce4ec; /* Pink muda */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        #instruction {
+            color: #d81b60;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Animasi Hati Berdetak */
+        .heart {
+            font-size: 80px;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            user-select: none;
+        }
+
+        .beat-animation {
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Tampilan Kotak Surat */
+        .letter-box {
+            visibility: hidden;
+            opacity: 0;
+            background: white;
+            padding: 30px;
+            width: 320px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 10;
+            border: 2px solid #f06292;
+        }
+
+        /* Munculkan surat saat aktif */
+        .letter-box.active {
+            visibility: visible;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        h2 { color: #ad1457; margin-top: 0; }
+        p { color: #444; line-height: 1.6; font-size: 0.95rem; }
+        
+        .signature {
+            text-align: right;
+            font-weight: bold;
+            color: #d81b60;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p id="instruction">Click the heart!</p>
+        
+        <div id="main-heart" class="heart beat-animation" onclick="openLetter()">❤️</div>
+
+        <div id="letter" class="letter-box">
+            <h2>hayy,</h2>
+            <p>maaf yaaa sila kalo perkataan ai kemaren bikin you marah ...</p>
+            <p>sumpahh ai ga bermaksud begitu niat ai cuma becanda,enjoy your life.</p>
+            <p><b>Pleased to meet you</b></p>
+            <div class="signature">vezz bott<br>vezz</div>
+        </div>
+    </div>
+
+    <script>
+        /* JAVASCRIPT DISINI */
+        function openLetter() {
+            const letter = document.getElementById('letter');
+            const instruction = document.getElementById('instruction');
+            const heart = document.getElementById('main-heart');
+            
+            // Tambahkan class active untuk memunculkan surat
+            letter.classList.add('active');
+            
+            // Sembunyikan instruksi dan hentikan animasi detak pada hati di belakang
+            instruction.style.opacity = '0';
+            heart.classList.remove('beat-animation');
+            heart.style.transform = 'scale(0.5)';
+            heart.style.opacity = '0.5';
+        }
+    </script>
+</body>
+</html>

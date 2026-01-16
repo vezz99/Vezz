@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffebee;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        h1 { color: #d32f2f; }
+        .buttons { margin-top: 20px; position: relative; }
+        button {
+            padding: 10px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+            transition: 0.3s;
+        }
+        #yesBtn { background-color: #4caf50; color: white; margin-right: 10px; }
+        #noBtn { background-color: #f44336; color: white; position: absolute; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="question">Hai sillaa, Aku suka kamu. <br> Mau gaa jadi pacarku? ❤️</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="accepted()">Mau!</button>
+            <button id="noBtn" onmouseover="moveButton()">Enggak</button>
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            const noBtn = document.getElementById('noBtn');
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function accepted() {
+            document.getElementById('question').innerHTML = "Yess! I Love You! ❤️💍";
+            document.querySelector('.buttons').style.display = 'none';
+            alert("Terima kasih sudah mau jadi bagian dari hidupku!");
+        }
+    </script>
+</body>
+</html>
